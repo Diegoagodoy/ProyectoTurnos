@@ -1,0 +1,21 @@
+<h1>Turnos Médicos</h1>
+
+<table border="1">
+  <tr>
+    <th>Fecha</th>
+    <th>Hora</th>
+    <th>Médico</th>
+    <th>Paciente</th>
+    <th>Estado</th>
+  </tr>
+
+  {% for t in turnos %}
+  <tr>
+    <td>{{ t.fecha }}</td>
+    <td>{{ t.hora }}</td>
+    <td>{{ t.medico }}</td>
+    <td>{{ t.paciente }}</td>
+    <td>{{ t.estado }}</td>
+  </tr>
+  {% endfor %}
+</table>

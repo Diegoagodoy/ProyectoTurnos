@@ -1,16 +1,6 @@
 from django.shortcuts import render , redirect
-from django.http import HttpResponse
 from .models import Turno, Medico, Especialidad,Paciente
-from .forms import MedicoForm, EspecialidadForm, PacienteForm
-
-def lista_turnos(request):
-    turnos = Turno.objects.select_related(
-        'medico', 'paciente'
-    ).order_by('fecha', 'hora')
-
-    return render(request, 'turnos/lista_turnos.html', {
-        'turnos': turnos
-    })
+from .forms import MedicoForm, EspecialidadForm, PacienteForm, TurnoForm
 
 
 def gestionar_medicos(request):
@@ -62,4 +52,54 @@ def gestionar_pacientes(request):
     })
 
 def crear_turno(request):
-    return HttpResponse("Formulario de turnos (en construcción)")
+    if request.method == 'POST':
+        form = TurnoForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('turnos:lista_turnos')
+    else:
+        form = TurnoForm()
+
+    return render(request, 'turnos/crear_turno.html', {'form': form})
+
+from django.shortcuts import render
+from .models import Turno, Medico, Paciente, Especialidad
+
+def lista_turnos(request):
+    turnos = Turno.objects.select_related('medico', 'paciente', 'medico__especialidad').all().order_by('fecha', 'hora')
+
+    # Filtros
+    especialidad_id = request.GET.get('especialidad')
+    medico_id = request.GET.get('medico')
+    paciente_id = request.GET.get('paciente')
+    fecha = request.GET.get('fecha')
+    estado = request.GET.get('estado')
+
+    if especialidad_id:
+        turnos = turnos.filter(medico__especialidad_id=especialidad_id)
+    if medico_id:
+        turnos = turnos.filter(medico_id=medico_id)
+    if paciente_id:
+        turnos = turnos.filter(paciente_id=paciente_id)
+    if fecha:
+        turnos = turnos.filter(fecha=fecha)
+    if estado:
+        turnos = turnos.filter(estado=estado)
+
+    especialidades = Especialidad.objects.all()
+    medicos = Medico.objects.all()
+    pacientes = Paciente.objects.all()
+
+    return render(request, 'turnos/lista_turnos.html', {
+        'turnos': turnos,
+        'especialidades': especialidades,
+        'medicos': medicos,
+        'pacientes': pacientes,
+        'filtros': {
+            'especialidad': especialidad_id,
+            'medico': medico_id,
+            'paciente': paciente_id,
+            'fecha': fecha,
+            'estado': estado,
+        }
+    })

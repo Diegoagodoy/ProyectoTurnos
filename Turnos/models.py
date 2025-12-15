@@ -1,7 +1,7 @@
 from django.db import models
 
 class Especialidad(models.Model):
-    nombre = models.CharField(max_length=100)
+    nombre = models.CharField(max_length=100,unique=True,error_messages={'unique': 'Ya existe esta Especialidad.'})
 
     def __str__(self):
         return self.nombre
@@ -9,23 +9,26 @@ class Especialidad(models.Model):
 
 class Medico(models.Model):
     nombre = models.CharField(max_length=100)
+    apellido = models.CharField(max_length=100)
     especialidad = models.ForeignKey(
         Especialidad,
-        on_delete=models.CASCADE
+        on_delete=models.CASCADE,
+        related_name='medicos'
     )
 
     def __str__(self):
-        return f"{self.nombre} - {self.especialidad}"
+        return f"{self.apellido}, {self.nombre}"
 
 
 class Paciente(models.Model):
     nombre = models.CharField(max_length=100)
-    dni = models.CharField(max_length=20, unique=True)
-    telefono = models.CharField(max_length=15, blank=True, null=True)
-    email = models.EmailField(blank=True, null=True)
-    
+    apellido = models.CharField(max_length=100)
+    dni = models.CharField(max_length=20, unique=True,error_messages={'unique': 'Ya existe un paciente con este DNI.'})
+    telefono = models.CharField(max_length=20)
+    email = models.EmailField()
+
     def __str__(self):
-        return self.nombre
+        return f"{self.apellido}, {self.nombre} ({self.dni})"
 
 
 class Turno(models.Model):

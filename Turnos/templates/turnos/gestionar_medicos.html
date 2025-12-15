@@ -1,0 +1,33 @@
+
+<h2>Alta de Médico</h2>
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Guardar médico</button>
+</form>
+
+<hr>
+
+<h3>Médicos registrados</h3>
+
+<table border="1" cellpadding="5">
+    <tr>
+        <th>Apellido</th>
+        <th>Nombre</th>
+        <th>Especialidad</th>
+    </tr>
+    {% for medico in medicos %}
+    <tr>
+        <td>{{ medico.apellido }}</td>
+        <td>{{ medico.nombre }}</td>
+        <td>{{ medico.especialidad.nombre }}</td>
+    </tr>
+    {% empty %}
+    <tr>
+        <td colspan="3">No hay médicos cargados</td>
+    </tr>
+    {% endfor %}
+</table>
+<br>
+<a href="{% url 'inicio:home' %}">Volver al inicio</a>

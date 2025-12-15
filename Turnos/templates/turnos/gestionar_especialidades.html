@@ -1,0 +1,20 @@
+<h2>Especialidades</h2>
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Agregar especialidad</button>
+</form>
+
+<hr>
+
+<h3>Especialidades cargadas</h3>
+<ul>
+    {% for e in especialidades %}
+        <li>{{ e.nombre }}</li>
+    {% empty %}
+        <li>No hay especialidades cargadas</li>
+    {% endfor %}
+</ul>
+
+<a href="{% url 'inicio:home' %}">Volver al inicio</a>

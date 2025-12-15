@@ -1,6 +1,15 @@
 <h1>Inicio</h1>
 
 <ul>
-    <li><a href="{% url 'lista_turnos' %}">Turnos Médicos</a></li>
+    <li><a href="{% url 'turnos:lista_turnos' %}">Turnos Medicos</a></li>
+    <li><a href="{% url 'turnos:gestionar_medicos' %}">Gestionar Medicos</a></li>
+    <li><a href="{% url 'turnos:gestionar_especialidades' %}">Gestionar Especialidades</a></li>
+    <li><a href="{% url 'turnos:gestionar_pacientes' %}">Gestionar Pacientes</a></li>
     <li><a href="/admin/">Administración</a></li>
+</ul>
+<br>
+<h3>Credenciales de Administración</h3>
+<ul>
+    <li><strong>Usuario: </strong>admin</li>
+    <li><strong>Password: </strong>admin</li>
 </ul>

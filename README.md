@@ -61,19 +61,18 @@ python manage.py runserver
 
 6. Superusuario:
 
-Usuario: admin
-Password: admin
-
+- Usuario: admin
+- Password: admin
 
 
 Uso
 
-Inicio: / → enlaces a Turnos, Médicos, Especialidades, Pacientes y Administración.
-Médicos: /turnos/medicos/ → agregar y lista médicos.
-Especialidades: /turnos/especialidades/ → agregar y lista especialidades.
-Pacientes: /turnos/pacientes/ → agregar y lista pacientes.
-Turnos: /turnos/ → lista turnos; /turnos/crear/ → crear nuevo turno.
+Inicio: / → enlaces a Turnos, Médicos, Especialidades, Pacientes y Administración.  
+Médicos: /turnos/medicos/ → agregar y lista médicos.  
+Especialidades: /turnos/especialidades/ → agregar y lista especialidades.  
+Pacientes: /turnos/pacientes/ → agregar y lista pacientes.  
+Turnos: /turnos/ → lista turnos; /turnos/crear/ → crear nuevo turno.  
 
-Autor
+Autor  
 
 Diego A. Godoy

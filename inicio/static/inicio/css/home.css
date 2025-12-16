@@ -1,0 +1,160 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Segoe UI", Tahoma, sans-serif;
+    background-color: #f4f6f8;
+    color: #333;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+.header {
+    background: #1e88e5;
+    color: #fff;
+    padding: 1.5rem 1rem;
+    text-align: center;
+}
+
+.titulo-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.logo {
+    width: 90px;
+}
+
+.header h1 {
+    font-size: 1.8rem;
+    font-weight: 600;
+}
+
+.container {
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+.menu-wrapper {
+    position: relative;
+    margin-bottom: 3rem;
+}
+
+.menu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.btn {
+    width: 100%;
+    max-width: 320px;
+    padding: 0.9rem 1.2rem;
+    background: #1e88e5;
+    color: #fff;
+    border-radius: 8px;
+    font-weight: 600;
+    text-align: center;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.btn:hover {
+    background: #1565c0;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+}
+
+.btn.admin {
+    background: #424242;
+}
+
+.btn.admin:hover {
+    background: #212121;
+}
+
+.medicos {
+    position: absolute;
+    transform: translateY(-50%);
+    width: 290px;
+    max-width: 40%;
+    pointer-events: none;
+    user-select: none;
+}
+
+.footer {
+    background: #e3f2fd;
+    border-left: 4px solid #1e88e5;
+    padding: 1rem;
+    margin-bottom: 2rem;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+.credenciales {
+    background: #fff;
+    border: 1px dashed #ccc;
+    padding: 1rem;
+    margin-bottom: 2rem;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.card {
+    background: #fff;
+    border: 1px solid #ddd;
+    padding: 1.8rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.card h2 {
+    margin-top: 1.5rem;
+    color: #1e88e5;
+}
+
+.card h3 {
+    margin-top: 1.2rem;
+}
+
+.card ul {
+    margin-left: 1.2rem;
+    margin-bottom: 1rem;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+    .medicos {
+        right: -160px;
+        width: 180px;
+    }
+}
+
+@media (max-width: 600px) {
+    .titulo-logo {
+        flex-direction: column;
+    }
+
+    .header h1 {
+        font-size: 1.4rem;
+    }
+
+    .medicos {
+        position: relative;
+        right: 0;
+        top: auto;
+        transform: none;
+        display: block;
+        margin: 25px auto 0;
+        width: 70%;
+    }
+}

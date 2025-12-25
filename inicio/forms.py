@@ -29,3 +29,9 @@ class SignupForm(UserCreationForm):
             'password1',
             'password2',
         )
+
+
+class NuestraClinicaForm(forms.Form):
+    titulo = forms.CharField(max_length=200, initial="Nuestra Clínica")
+    descripcion = forms.CharField(widget=forms.Textarea, initial="Bienvenido a nuestra clínica, un espacio dedicado a brindar atención médica de calidad.")
+    imagen = forms.CharField(max_length=200, initial='inicio/img/clinica.jpg')  # ruta al static

@@ -1,20 +1,33 @@
-<h2>Especialidades</h2>
+{% extends "turnos/base_turnos.html" %}
 
-<form method="post">
+{% block title %}Gestión de Especialidades{% endblock %}
+
+{% block turnos_content %}
+
+<h2>Gestión de Especialidades</h2>
+
+<form method="post" class="turnos-form">
     {% csrf_token %}
+
     {{ form.as_p }}
-    <button type="submit">Agregar especialidad</button>
+
+    <div class="form-actions">
+        <button type="submit" class="btn-primary">
+            ➕ Agregar especialidad
+        </button>
+    </div>
 </form>
 
-<hr>
+<hr class="separador">
 
 <h3>Especialidades cargadas</h3>
-<ul>
+
+<ul class="lista-simple">
     {% for e in especialidades %}
         <li>{{ e.nombre }}</li>
     {% empty %}
-        <li>No hay especialidades cargadas</li>
+        <li class="empty">No hay especialidades cargadas</li>
     {% endfor %}
 </ul>
 
-<a href="{% url 'inicio:home' %}">Volver al inicio</a>
+{% endblock %}

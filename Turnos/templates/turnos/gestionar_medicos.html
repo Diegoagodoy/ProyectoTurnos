@@ -1,33 +1,50 @@
+{% extends "turnos/base_turnos.html" %}
+
+{% block title %}Gestión de Médicos{% endblock %}
+
+{% block turnos_content %}
 
 <h2>Alta de Médico</h2>
 
-<form method="post">
+<form method="post" class="turnos-form">
     {% csrf_token %}
+
     {{ form.as_p }}
-    <button type="submit">Guardar médico</button>
+
+    <div class="form-actions">
+        <button type="submit" class="btn-primary">
+            👨‍⚕️ Guardar médico
+        </button>
+    </div>
 </form>
 
-<hr>
+<hr class="separador">
 
 <h3>Médicos registrados</h3>
 
-<table border="1" cellpadding="5">
-    <tr>
-        <th>Apellido</th>
-        <th>Nombre</th>
-        <th>Especialidad</th>
-    </tr>
-    {% for medico in medicos %}
-    <tr>
-        <td>{{ medico.apellido }}</td>
-        <td>{{ medico.nombre }}</td>
-        <td>{{ medico.especialidad.nombre }}</td>
-    </tr>
-    {% empty %}
-    <tr>
-        <td colspan="3">No hay médicos cargados</td>
-    </tr>
-    {% endfor %}
+<table class="turnos-table">
+    <thead>
+        <tr>
+            <th>Apellido</th>
+            <th>Nombre</th>
+            <th>Especialidad</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for medico in medicos %}
+        <tr>
+            <td>{{ medico.apellido }}</td>
+            <td>{{ medico.nombre }}</td>
+            <td>{{ medico.especialidad.nombre }}</td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="3" class="empty-row">
+                No hay médicos cargados
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
 </table>
-<br>
-<a href="{% url 'inicio:home' %}">Volver al inicio</a>
+
+{% endblock %}

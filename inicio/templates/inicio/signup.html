@@ -1,0 +1,28 @@
+{% extends "inicio/base.html" %}
+{% load static %}
+
+{% block title %}Registro | Gestión de Turnos{% endblock %}
+
+{% block auth %}
+{# En registro tampoco mostramos botones de login/register #}
+{% endblock %}
+
+{% block content %}
+<div class="card" style="max-width: 520px; margin: 0 auto;">
+
+    <h2 style="text-align:center; margin-bottom:20px;">
+        Registro de Usuario
+    </h2>
+
+    <form method="post">
+        {% csrf_token %}
+
+        {{ form.as_p }}
+
+        <button type="submit" class="btn" style="width:100%; margin-top:10px;">
+            Registrarse
+        </button>
+    </form>
+
+</div>
+{% endblock %}

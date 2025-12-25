@@ -1,0 +1,22 @@
+{% extends "inicio/base.html" %}
+
+{% block header_nav %}
+<nav class="turnos-nav header-turnos">
+    <a href="{% url 'turnos:lista_turnos' %}">📅 Turnos</a>
+    <a href="{% url 'turnos:crear_turno' %}">➕ Crear Turno</a>
+    <a href="{% url 'turnos:gestionar_medicos' %}">👨‍⚕️ Médicos</a>
+    <a href="{% url 'turnos:gestionar_especialidades' %}">🩺 Especialidades</a>
+    <a href="{% url 'turnos:gestionar_pacientes' %}">🧑‍🤝‍🧑 Pacientes</a>
+
+    <a href="{% url 'inicio:perfil' %}">👤 Editar usuario</a>
+    <a href="{% url 'inicio:password_change' %}">🔑 Cambiar contraseña</a>
+    <a href="/admin/">⚙️ Administración</a>
+</nav>
+{% endblock %}
+
+{% block content %}
+<div class="turnos-container">
+    {% block turnos_content %}{% endblock %}
+</div>
+{% endblock %}
+

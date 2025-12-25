@@ -1,16 +1,28 @@
-<h2>Gestion de Pacientes</h2>
+{% extends "turnos/base_turnos.html" %}
 
-<form method="post">
+{% block title %}Gestión de Pacientes{% endblock %}
+
+{% block turnos_content %}
+
+<h2>Gestión de Pacientes</h2>
+
+<form method="post" class="turnos-form">
     {% csrf_token %}
+
     {{ form.as_p }}
-    <button type="submit">Guardar Paciente</button>
+
+    <div class="form-actions">
+        <button type="submit" class="btn-primary">
+            🧑‍🤝‍🧑 Guardar paciente
+        </button>
+    </div>
 </form>
 
-<hr>
+<hr class="separador">
 
 <h3>Pacientes registrados</h3>
 
-<table border="1" cellpadding="6" cellspacing="0">
+<table class="turnos-table">
     <thead>
         <tr>
             <th>Apellido</th>
@@ -31,11 +43,12 @@
         </tr>
         {% empty %}
         <tr>
-            <td colspan="5">No hay pacientes cargados</td>
+            <td colspan="5" class="empty-row">
+                No hay pacientes cargados
+            </td>
         </tr>
         {% endfor %}
     </tbody>
 </table>
 
-<br>
-<a href="{% url 'inicio:home' %}">Volver al inicio</a>
+{% endblock %}

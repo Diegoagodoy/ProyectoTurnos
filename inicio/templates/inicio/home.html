@@ -1,110 +1,19 @@
+{% extends "inicio/base.html" %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>Inicio | Gestion de Turnos</title>
-    <link rel="stylesheet" href="{% static 'inicio/css/home.css' %}">
-</head>
-<body>
+{% block title %}Inicio | Gestión de Turnos{% endblock %}
 
-    <header class="header">
-        <div class="titulo-logo">
-            <img src="{% static 'inicio/img/LogoClinica.png' %}" alt="Clínica" class="logo">
-            <h1>Gestión de Turnos Médicos</h1>
-        </div>
-    </header>
+{% block content %}
+<section class="menu-wrapper">
 
-    <main class="container">
+    <section class="menu">
+        <a class="btn" href="{% url 'turnos:lista_turnos' %}">📅 Turnos Médicos</a>
+        <a class="btn" href="{% url 'turnos:crear_turno' %}">➕ Gestionar Turno</a>
+        <a class="btn" href="{% url 'turnos:gestionar_medicos' %}">👨‍⚕️ Gestionar Médicos</a>
+        <a class="btn" href="{% url 'turnos:gestionar_especialidades' %}">🩺 Gestionar Especialidades</a>
+        <a class="btn" href="{% url 'turnos:gestionar_pacientes' %}">🧑‍🤝‍🧑 Gestionar Pacientes</a>
+        <a class="btn admin" href="/admin/">⚙️ Administración</a>
+    </section>
 
-        <section class="menu-wrapper">
-
-            <section class="menu">
-                <a class="btn" href="{% url 'turnos:lista_turnos' %}">📅 Turnos Médicos</a>
-                <a class="btn" href="{% url 'turnos:crear_turno' %}">➕ Gestionar Turno</a>
-                <a class="btn" href="{% url 'turnos:gestionar_medicos' %}">👨‍⚕️ Gestionar Médicos</a>
-                <a class="btn" href="{% url 'turnos:gestionar_especialidades' %}">🩺 Gestionar Especialidades</a>
-                <a class="btn" href="{% url 'turnos:gestionar_pacientes' %}">🧑‍🤝‍🧑 Gestionar Pacientes</a>
-                <a class="btn admin" href="/admin/">⚙️ Administración</a>
-            </section>
-
-            <img src="{% static 'inicio/img/Medicos.png' %}" alt="Médicos" class="medicos">
-
-        </section>
-
-        <footer class="footer">
-            
-            <p>📍 Clinica Central - Av. Siempre Viva 123</p>
-            <p>📞 Contacto: (011) 4567-8900</p>
-            <p><strong>Version App:</strong> 1.0.0 - <strong>Ultima actualizacion:</strong> 16 de Diciembre 2025</p> 
-        </footer>
-
-        <section class="credenciales">
-            <h3>Credenciales de Administracion</h3>
-            <p><strong>Usuario:</strong> admin</p>
-            <p><strong>Password:</strong> admin</p>
-        </section>
-
-        <section class="card">
-            <p>
-                Cesar, Camila, espero se encuentren bien.  
-                Debido al poco tiempo disponible entre la llegada de mis vacaciones
-                y la fecha de reentrega, pude lograr lo siguiente:
-            </p>
-
-            <ul>
-                <li><strong>Creación de dos aplicaciones:</strong>
-                    <ul>
-                        <li>
-                            <strong>Inicio:</strong> Panel central de navegacion,
-                            pensado para escalar el proyecto ante futuras necesidades.
-                        </li>
-                        <li>
-                            <strong>Turnos:</strong> Gestion completa de la clinica/hospital:
-                            <ul>
-                                <li>Modelos de Medicos, Pacientes, Especialidades y Turnos.</li>
-                                <li>Alta, listado y validaciones basicas.</li>
-                                <li>Creacion de turnos con medico, paciente, fecha y hora.</li>
-                                <li>Control de duplicados (DNI y horarios).</li>
-                                <li>Templates funcionales (NO normalizados).</li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
-
-            <h2>Mejoras pendientes</h2>
-
-            <h3>Front-end / HTML</h3>
-            <ul>
-                <li>Estandarizar a HTML5 semantico.</li>
-                <li>Implementar herencia de templates con "extends" y sus bloques.</li>
-                <li>Agregar CSS y JS propios (sin Bootstrap como se hizo en la app "inicio").</li>
-                <li>Validaciones y Filtros.</li>
-            </ul>
-
-            <h3>Validaciones</h3>
-            <ul>
-                <li>DNI: solo números y 8 caracteres.</li>
-                <li>Evitar duplicados en médicos y especialidades.</li>
-                <li>Filtros en medicos segun especialidad.</li>
-            </ul>
-
-            <h3>Turnos</h3>
-            <ul>
-                <li>Filtrado de medicos por especialidad.</li>
-                <li>Mensajes claros ante conflictos de horarios.</li>
-                <li>Busqueda por fecha, medico, paciente y estado.</li>
-            </ul>
-
-            <h3>Interfaz de Usuario</h3>
-            <ul>
-                <li>Selects con búsqueda (esto permite agilidad de haber muchos registros).</li>
-                <li>Mensajes de éxito y error (al escribir la BD).</li>
-            </ul>
-        </section>
-
-    </main>
-    <script src="{% static 'inicio/js/home.js' %}"></script>
-</body>
-</html>
+    <img src="{% static 'inicio/img/Medicos.png' %}" alt="Médicos" class="medicos">
+</section>
+{% endblock %}

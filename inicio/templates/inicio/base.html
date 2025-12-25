@@ -1,0 +1,63 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Gestión de Turnos{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'inicio/css/home.css' %}">
+</head>
+<body>
+
+<header class="header">
+
+    <!-- TOP HEADER -->
+    <div class="header-top">
+        <div class="titulo-logo">
+            <a href="{% url 'inicio:home' %}">
+                <img src="{% static 'inicio/img/LogoClinica.png' %}" alt="Clínica" class="logo">
+            </a>
+            <h1>Gestión de Turnos Médicos</h1>
+        </div>
+
+        <div class="auth-box">
+            {% if user.is_authenticated %}
+                <div class="avatar-circle"></div>
+                <span class="username">
+                    {{ user.username }} {{ user.last_name }}
+                </span>
+
+                <form action="{% url 'inicio:logout' %}" method="post">
+                    {% csrf_token %}
+                    <button type="submit" class="auth-btn logout">
+                        Cerrar sesión
+                    </button>
+                </form>
+            {% else %}
+                <a href="{% url 'inicio:login' %}" class="auth-btn login">Iniciar sesión</a>
+                <a href="{% url 'inicio:signup' %}" class="auth-btn register">Registrarse</a>
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- NAV DINÁMICA POR APP -->
+    <div class="header-nav">
+        {% block header_nav %}{% endblock %}
+    </div>
+
+</header>
+
+<main class="container">
+    {% block content %}{% endblock %}
+</main>
+
+<footer class="footer">
+    <p>📍 Clínica Central - Av. Siempre Viva 123</p>
+    <p>📞 Contacto: (011) 4567-8900</p>
+    <p>
+        <strong>Versión App:</strong> 1.0.0 —
+        <strong>Última actualización:</strong> 16 de Diciembre 2025
+    </p>
+</footer>
+
+</body>
+</html>

@@ -1,160 +1,372 @@
+/* =========================
+   RESET GENERAL
+========================= */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
+/* =========================
+   BODY
+========================= */
 body {
-    font-family: "Segoe UI", Tahoma, sans-serif;
-    background-color: #f4f6f8;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
     color: #333;
-    line-height: 1.6;
-    overflow-x: hidden;
 }
 
+/* =========================
+   HEADER
+========================= */
 .header {
-    background: #1e88e5;
-    color: #fff;
-    padding: 1.5rem 1rem;
-    text-align: center;
+    width: 100%;
+    background-color: #ffffff;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+/* Fila superior */
+.header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
 }
 
 .titulo-logo {
     display: flex;
     align-items: center;
-    justify-content: center;
-    gap: 12px;
-    flex-wrap: wrap;
+    gap: 15px;
 }
 
 .logo {
-    width: 90px;
+    height: 55px;
 }
 
 .header h1 {
-    font-size: 1.8rem;
+    font-size: 22px;
+    color: #203a43;
+}
+
+/* =========================
+   AUTH BOX
+========================= */
+.auth-box {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.avatar-circle {
+    width: 42px;
+    height: 42px;
+    background-color: #2c5364;
+    border-radius: 50%;
+}
+
+.username {
+    font-weight: bold;
+    color: #203a43;
+}
+
+/* =========================
+   BOTONES
+========================= */
+.auth-btn,
+.btn,
+.btn-primary {
+    padding: 10px 16px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: bold;
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+    transition: all 0.2s ease;
+    display: inline-block;
+}
+
+/* Auth */
+.auth-btn.login {
+    background-color: #2c5364;
+    color: #ffffff;
+}
+
+.auth-btn.register {
+    background-color: #4caf50;
+    color: #ffffff;
+}
+
+.auth-btn.logout {
+    background-color: #d9534f;
+    color: #ffffff;
+}
+
+.auth-btn:hover,
+.btn:hover,
+.btn-primary:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 14px rgba(0,0,0,0.25);
+}
+
+/* =========================
+   NAVBAR TURNOS
+========================= */
+.header-nav {
+    width: 100%;
+    background-color: #f2f6f8;
+    padding: 10px 30px;
+    display: flex;
+    gap: 20px;
+    border-top: 1px solid #ddd;
+}
+
+.header-nav a {
+    color: #203a43;
     font-weight: 600;
+    text-decoration: none;
+    padding: 6px 12px;
+    border-radius: 6px;
+    transition: all 0.2s ease;
 }
 
+.header-nav a:hover {
+    background-color: #2c5364;
+    color: #ffffff;
+}
+
+/* =========================
+   CONTENEDOR GENERAL
+========================= */
 .container {
-    max-width: 900px;
-    margin: 2rem auto;
-    padding: 0 1rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
 }
 
+/* =========================
+   HOME / MENU
+========================= */
 .menu-wrapper {
-    position: relative;
-    margin-bottom: 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 40px;
+    margin-top: 40px;
 }
 
 .menu {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(220px, 1fr));
+    gap: 20px;
 }
 
 .btn {
-    width: 100%;
-    max-width: 320px;
-    padding: 0.9rem 1.2rem;
-    background: #1e88e5;
-    color: #fff;
-    border-radius: 8px;
-    font-weight: 600;
+    background-color: #ffffff;
+    color: #203a43;
     text-align: center;
-    text-decoration: none;
-    transition: all 0.3s ease;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
 }
 
 .btn:hover {
-    background: #1565c0;
-    transform: translateY(-2px);
-    box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+    background-color: #2c5364;
+    color: #ffffff;
 }
 
 .btn.admin {
-    background: #424242;
+    background-color: #f39c12;
+    color: #ffffff;
 }
 
 .btn.admin:hover {
-    background: #212121;
+    background-color: #d68910;
 }
 
 .medicos {
-    position: absolute;
-    transform: translateY(-50%);
-    width: 290px;
-    max-width: 40%;
-    pointer-events: none;
-    user-select: none;
+    max-width: 420px;
 }
 
+/* =========================
+   FOOTER
+========================= */
 .footer {
-    background: #e3f2fd;
-    border-left: 4px solid #1e88e5;
-    padding: 1rem;
-    margin-bottom: 2rem;
-    border-radius: 6px;
-    font-size: 0.9rem;
+    margin-top: 60px;
+    padding: 20px;
     text-align: center;
+    color: #ffffff;
 }
 
-.credenciales {
-    background: #fff;
-    border: 1px dashed #ccc;
-    padding: 1rem;
-    margin-bottom: 2rem;
-    border-radius: 8px;
-    text-align: center;
+/* =========================
+   AUTH FORMS
+========================= */
+.auth-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 180px);
 }
 
 .card {
-    background: #fff;
-    border: 1px solid #ddd;
-    padding: 1.8rem;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    background-color: #ffffff;
+    color: #203a43;
+    width: 100%;
+    max-width: 420px;
+    padding: 30px;
+    border-radius: 14px;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.4);
 }
 
 .card h2 {
-    margin-top: 1.5rem;
-    color: #1e88e5;
+    text-align: center;
+    margin-bottom: 20px;
 }
 
-.card h3 {
-    margin-top: 1.2rem;
+.card label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 600;
 }
 
-.card ul {
-    margin-left: 1.2rem;
-    margin-bottom: 1rem;
+.card input {
+    width: 100%;
+    padding: 10px 12px;
+    margin-bottom: 18px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
 }
 
-/* RESPONSIVE */
+.card button {
+    width: 100%;
+    padding: 12px;
+    background-color: #2c5364;
+    color: #ffffff;
+    border-radius: 8px;
+    font-weight: bold;
+}
+
+/* =========================
+   TURNOS
+========================= */
+.turnos-container {
+    max-width: 1100px;
+    margin: 30px auto;
+    background-color: #ffffff;
+    padding: 25px 30px;
+    border-radius: 14px;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.25);
+}
+
+.turnos-container h2 {
+    margin-bottom: 20px;
+    color: #203a43;
+}
+
+.turnos-form p {
+    margin-bottom: 15px;
+}
+
+.filtros-form {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.filtros-form label {
+    font-weight: 600;
+}
+
+.filtros-form input,
+.filtros-form select,
+.turnos-form input,
+.turnos-form select {
+    width: 100%;
+    padding: 8px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+
+/* =========================
+   TABLAS
+========================= */
+.turnos-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.turnos-table th {
+    background-color: #2c5364;
+    color: #ffffff;
+    padding: 10px;
+}
+
+.turnos-table td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.turnos-table tr:hover {
+    background-color: #f2f6f8;
+}
+
+.empty-row {
+    text-align: center;
+    font-weight: bold;
+    color: #777;
+    padding: 15px;
+}
+
+/* =========================
+   LISTAS SIMPLES
+========================= */
+.lista-simple {
+    margin-top: 15px;
+    padding-left: 20px;
+}
+
+.lista-simple li {
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+/* =========================
+   SEPARADORES
+========================= */
+hr,
+.separador {
+    margin: 25px 0;
+    border: none;
+    border-top: 1px solid #ddd;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
 @media (max-width: 900px) {
-    .medicos {
-        right: -160px;
-        width: 180px;
-    }
-}
 
-@media (max-width: 600px) {
-    .titulo-logo {
+    .header-top {
         flex-direction: column;
+        gap: 15px;
+        text-align: center;
     }
 
-    .header h1 {
-        font-size: 1.4rem;
+    .header-nav {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .menu-wrapper {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .menu {
+        grid-template-columns: 1fr;
     }
 
     .medicos {
-        position: relative;
-        right: 0;
-        top: auto;
-        transform: none;
-        display: block;
-        margin: 25px auto 0;
-        width: 70%;
+        max-width: 300px;
     }
 }

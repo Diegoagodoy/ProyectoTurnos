@@ -1,8 +1,22 @@
+{% extends "turnos/base_turnos.html" %}
+
+{% block title %}Crear Turno{% endblock %}
+
+{% block turnos_content %}
+
 <h2>Crear Turno</h2>
-<form method="post">
+
+<form method="post" class="turnos-form">
     {% csrf_token %}
+
     {{ form.as_p }}
-    <button type="submit">Guardar Turno</button>
+
+    <div class="form-actions">
+        <button type="submit" class="btn-primary">
+            Guardar Turno
+        </button>
+    </div>
 </form>
-<br>
-<a href="{% url 'turnos:lista_turnos' %}">Volver a Turnos</a>
+
+{% endblock %}
+

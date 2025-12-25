@@ -2,15 +2,30 @@
 
 {% block header_nav %}
 <nav class="turnos-nav header-turnos">
-    <a href="{% url 'turnos:lista_turnos' %}">📅 Turnos</a>
-    <a href="{% url 'turnos:crear_turno' %}">➕ Crear Turno</a>
-    <a href="{% url 'turnos:gestionar_medicos' %}">👨‍⚕️ Médicos</a>
-    <a href="{% url 'turnos:gestionar_especialidades' %}">🩺 Especialidades</a>
-    <a href="{% url 'turnos:gestionar_pacientes' %}">🧑‍🤝‍🧑 Pacientes</a>
 
-    <a href="{% url 'inicio:perfil' %}">👤 Editar usuario</a>
-    <a href="{% url 'inicio:password_change' %}">🔑 Cambiar contraseña</a>
-    <a href="/admin/">⚙️ Administración</a>
+    
+    {% if not user.is_authenticated %}
+        <a href="{% url 'inicio:home' %}">🏠 Inicio</a>
+    
+    {% elif user.is_authenticated and not user.is_superuser %}
+        <a href="{% url 'inicio:home' %}">🏠 Inicio</a>
+        <a href="{% url 'turnos:lista_turnos' %}">📅 Turnos</a>
+        <a href="{% url 'turnos:crear_turno' %}">➕ Crear Turno</a>
+        <a href="{% url 'inicio:perfil' %}">👤 Editar usuario</a>
+        <a href="{% url 'inicio:password_change' %}">🔑 Cambiar contraseña</a>
+
+    
+    {% elif user.is_superuser %}
+        <a href="{% url 'inicio:home' %}">🏠 Inicio</a>
+        <a href="{% url 'turnos:lista_turnos' %}">📅 Turnos</a>
+        <a href="{% url 'turnos:crear_turno' %}">➕ Crear Turno</a>
+        <a href="{% url 'turnos:gestionar_medicos' %}">👨‍⚕️ Médicos</a>
+        <a href="{% url 'turnos:gestionar_especialidades' %}">🩺 Especialidades</a>
+        <a href="{% url 'turnos:gestionar_pacientes' %}">🧑‍🤝‍🧑 Pacientes</a>
+        <a href="{% url 'inicio:password_change' %}">🔑 Cambiar contraseña</a>
+        <a href="/admin/">⚙️ Administración</a>
+    {% endif %}
+
 </nav>
 {% endblock %}
 

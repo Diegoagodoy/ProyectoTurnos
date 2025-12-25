@@ -10,7 +10,6 @@
 
 <header class="header">
 
-    <!-- TOP HEADER -->
     <div class="header-top">
         <div class="titulo-logo">
             <a href="{% url 'inicio:home' %}">
@@ -38,8 +37,7 @@
             {% endif %}
         </div>
     </div>
-
-    <!-- NAV DINÁMICA POR APP -->
+    
     <div class="header-nav">
         {% block header_nav %}{% endblock %}
     </div>
@@ -51,6 +49,7 @@
 </main>
 
 <footer class="footer">
+    <hr>
     <p>📍 Clínica Central - Av. Siempre Viva 123</p>
     <p>📞 Contacto: (011) 4567-8900</p>
     <p>

@@ -1,0 +1,28 @@
+{% extends "inicio/base.html" %}
+{% load static %}
+
+{% block title %}Nuestra Clínica{% endblock %}
+
+{% block auth %}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="card" style="max-width: 600px; margin: 20px auto; padding: 20px;">
+
+    <h2 style="text-align:center; margin-bottom:20px;">
+        Nuestra Clínica
+    </h2>
+
+    <p style="text-align:center; margin-bottom:20px;">
+        Bienvenido a nuestra clínica, un espacio dedicado a brindar atención médica de calidad. 
+        Contamos con profesionales especializados, instalaciones modernas y un enfoque centrado en el paciente.
+    </p>
+
+    <img src="{% static 'inicio/img/clinica.jpg' %}" 
+         alt="Foto de la clínica" 
+         style="max-width:100%; display:block; margin: 0 auto; border-radius: 8px;">
+
+</div>
+{% endblock %}

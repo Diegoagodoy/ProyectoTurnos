@@ -6,13 +6,31 @@
 <section class="menu-wrapper">
 
     <section class="menu">
+
+    {% if not user.is_authenticated %}
+        <a class="btn" href="{% url 'inicio:nuestra_clinica' %}">🏥 Nuestra Clínica</a>
+
+    
+    {% elif user.is_authenticated and not user.is_superuser %}
+        <a class="btn" href="{% url 'turnos:lista_turnos' %}">📅 Turnos Médicos</a>
+        <a class="btn" href="{% url 'turnos:crear_turno' %}">➕ Gestionar Turno</a>
+        <a class="btn" href="{% url 'inicio:perfil' %}">👤 Editar Perfil</a>
+        <a class="btn" href="{% url 'inicio:password_change' %}">🔑 Cambiar Contraseña</a>
+   
+
+    {% elif user.is_superuser %}
+        <a class="btn" href="{% url 'inicio:nuestra_clinica' %}">🏥 Nuestra Clínica</a>
         <a class="btn" href="{% url 'turnos:lista_turnos' %}">📅 Turnos Médicos</a>
         <a class="btn" href="{% url 'turnos:crear_turno' %}">➕ Gestionar Turno</a>
         <a class="btn" href="{% url 'turnos:gestionar_medicos' %}">👨‍⚕️ Gestionar Médicos</a>
         <a class="btn" href="{% url 'turnos:gestionar_especialidades' %}">🩺 Gestionar Especialidades</a>
         <a class="btn" href="{% url 'turnos:gestionar_pacientes' %}">🧑‍🤝‍🧑 Gestionar Pacientes</a>
         <a class="btn admin" href="/admin/">⚙️ Administración</a>
-    </section>
+        <a class="btn" href="{% url 'inicio:password_change' %}">🔑 Cambiar Contraseña</a>
+    {% endif %}
+
+</section>
+
 
     <img src="{% static 'inicio/img/Medicos.png' %}" alt="Médicos" class="medicos">
 </section>

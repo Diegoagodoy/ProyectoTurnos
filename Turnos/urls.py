@@ -4,10 +4,9 @@ from . import views
 app_name = 'turnos'
 
 urlpatterns = [
-    path('', views.lista_turnos, name='lista_turnos'),
+    path('', views.TurnoListView.as_view(), name='lista_turnos'),
+    path('crear/', views.TurnoCreateView.as_view(), name='crear_turno'),
     path('medicos/', views.gestionar_medicos, name='gestionar_medicos'),
-    path('especialidades/', views.gestionar_especialidades,name='gestionar_especialidades'),
+    path('especialidades/', views.gestionar_especialidades, name='gestionar_especialidades'),
     path('pacientes/', views.gestionar_pacientes, name='gestionar_pacientes'),
-    path('turnos/crear/', views.crear_turno, name='crear_turno'),
 ]
-
